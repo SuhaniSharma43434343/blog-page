@@ -120,51 +120,51 @@ body::before {
 
 @media (max-width: 768px) {
     .header .container {
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column; /* Stack items vertically */
+        justify-content: center;
         align-items: center;
-        flex-wrap: nowrap; /* Prevent wrapping */
+        gap: 15px; /* Add gap between stacked items */
     }
 
     .logo {
         order: 1;
-        flex-grow: 1; /* Allow logo to take available space */
+        flex-grow: 0; /* Don't let logo grow */
+        margin-bottom: 10px; /* Space below logo */
+    }
+
+    .vpn-button {
+        order: 2;
+        width: 80%; /* Make button wider on mobile */
+        max-width: 250px; /* Limit button width */
+        margin-top: 0; /* Remove top margin */
+        margin-left: 0; /* Remove auto margin */
+        margin-bottom: 10px; /* Space below button */
     }
 
     .burger {
         display: block;
-        order: 3; /* Place burger after button */
-    }
-
-    .vpn-button {
-        order: 2; /* Place VPN button between logo and burger */
-        width: auto; /* Allow button to size naturally */
-        margin-top: 0; /* Remove top margin */
-        padding: 8px 15px;
-        font-size: 14px;
-        margin-left: auto; /* Push the button to the right, next to the burger */
+        order: 3;
+        margin-top: 10px; /* Space above burger */
     }
 
     .nav {
-        display: none;
         position: fixed;
         top: 0;
-        left: 0;
+        left: 100%; /* Start off-screen to the right */
         height: 100%;
         width: 100%;
         background-color: #16213e;
         padding-top: 80px;
         z-index: 10;
+        display: flex; /* Ensure flex properties apply for centering */
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: transform 0.3s ease-in-out;
-        transform: translateX(100%);
+        transition: all 0.3s ease-in-out; /* Smooth transition for nav */
     }
 
     .nav.nav-active {
-        display: flex;
-        transform: translateX(0);
+        left: 0; /* Slide in from right */
     }
 
     .nav ul {
