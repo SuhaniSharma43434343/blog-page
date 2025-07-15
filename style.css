@@ -38,6 +38,13 @@ body::before {
     padding: 0 20px;
 }
 
+@media (max-width: 1024px) {
+    .container {
+        max-width: 960px;
+        padding: 0 15px;
+    }
+}
+
 /* Header */
 .header {
     background-color: #16213e;
@@ -49,6 +56,7 @@ body::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px; /* Add a gap between header elements */
 }
 
 .logo {
@@ -59,100 +67,111 @@ body::before {
     white-space: nowrap; /* Ensure text stays on a single line */
 }
 
-.nav ul {
+.nav-links {
     list-style: none;
+    display: flex;
+    gap: 40px; /* Increased gap for more spacing */
     margin: 0;
     padding: 0;
-    display: flex;
 }
 
-.nav ul li {
-    margin-left: 30px;
-}
-
-.nav ul li a {
+.nav-links a {
     color: #e0e0e0;
     text-decoration: none;
     font-weight: 600;
+    font-size: 16px;
     transition: color 0.3s ease;
 }
 
-.nav ul li a:hover {
+.nav-links a:hover {
     color: #e94560;
-    transform: translateY(-2px); /* Subtle lift on hover */
 }
 
 .vpn-button {
     background-color: #e94560;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 10px 25px; /* Adjusted padding */
+    border-radius: 25px; /* More rounded corners */
     cursor: pointer;
+    font-size: 16px;
     font-weight: 600;
     transition: background-color 0.3s ease;
+    margin-left: auto; /* Push the button to the right */
 }
 
-    .vpn-button:hover {
-        background-color: #d4304a;
-    }
-
-/* Burger Menu */
-.burger {
-    display: none; /* Hidden by default, shown on smaller screens */
-    cursor: pointer;
-}
-
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: #e0e0e0;
-    margin: 5px;
-    transition: all 0.3s ease;
+.vpn-button:hover {
+    background-color: #d4304a;
 }
 
 @media (max-width: 768px) {
-    .nav {
-        display: none; /* Hide nav by default on mobile */
-    }
-
-    .nav.nav-active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 80px; /* Adjust based on header height */
-        left: 0;
-        width: 100%;
-        background-color: #16213e;
-        padding: 20px 0;
-        z-index: 10;
+    .header .container {
+        flex-direction: row; /* Keep header items in a row */
+        justify-content: space-between; /* Space out items */
         align-items: center;
+        flex-wrap: wrap; /* Allow items to wrap */
     }
 
-    .nav.nav-active ul {
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav.nav-active ul li {
-        margin: 10px 0;
+    .logo {
+        order: 1; /* Ensure logo is first */
     }
 
     .burger {
         display: block; /* Show burger on mobile */
+        order: 2; /* Place burger after logo */
     }
 
-    .burger.toggle .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
+    .vpn-button {
+        order: 3; /* Move VPN button to the end on mobile */
+        width: 100%; /* Make button full width */
+        margin-top: 15px; /* Add some space */
+        padding: 8px 15px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
     }
 
-    .burger.toggle .line2 {
-        opacity: 0;
+    .nav {
+        display: none; /* Hide nav by default on mobile */
+        position: fixed; /* Use fixed to cover entire screen */
+        top: 0;
+        left: 0;
+        height: 100%; /* Full height */
+        width: 100%;
+        background-color: #16213e;
+        padding-top: 80px; /* Space for header */
+        z-index: 10;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center content vertically */
+        transition: transform 0.3s ease-in-out; /* Smooth transition for nav */
+        transform: translateX(100%); /* Start off-screen to the right */
     }
 
-    .burger.toggle .line3 {
-        transform: rotate(45deg) translate(-5px, -6px);
+    .nav.nav-active {
+        display: flex;
+        transform: translateX(0); /* Slide in from right */
+    }
+
+    .nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .nav ul li {
+        margin: 15px 0; /* More space between links */
+    }
+
+    .nav ul li a {
+        font-size: 20px; /* Larger font for mobile links */
+    }
+
+    .blogs-section h1 {
+        font-size: 28px;
+    }
+
+    .newsletter-section h2 {
+        font-size: 26px;
     }
 }
 
@@ -427,21 +446,64 @@ body::before {
 /* Responsive Design */
 @media (max-width: 768px) {
     .header .container {
-        flex-direction: column;
+        flex-direction: row; /* Keep header items in a row */
+        justify-content: space-between; /* Space out items */
+        align-items: center;
+        flex-wrap: wrap; /* Allow items to wrap */
     }
 
-    .nav ul {
-        margin-top: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
+    .logo {
+        order: 1; /* Ensure logo is first */
     }
 
-    .nav ul li {
-        margin: 5px 15px;
+    .burger {
+        display: block; /* Show burger on mobile */
+        order: 2; /* Place burger after logo */
     }
 
     .vpn-button {
-        margin-top: 20px;
+        order: 3; /* Move VPN button to the end on mobile */
+        width: 100%; /* Make button full width */
+        margin-top: 15px; /* Add some space */
+        padding: 8px 15px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .nav {
+        display: none; /* Hide nav by default on mobile */
+        position: fixed; /* Use fixed to cover entire screen */
+        top: 0;
+        left: 0;
+        height: 100%; /* Full height */
+        width: 100%;
+        background-color: #16213e;
+        padding-top: 80px; /* Space for header */
+        z-index: 10;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center content vertically */
+        transition: transform 0.3s ease-in-out; /* Smooth transition for nav */
+        transform: translateX(100%); /* Start off-screen to the right */
+    }
+
+    .nav.nav-active {
+        display: flex;
+        transform: translateX(0); /* Slide in from right */
+    }
+
+    .nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .nav ul li {
+        margin: 15px 0; /* More space between links */
+    }
+
+    .nav ul li a {
+        font-size: 20px; /* Larger font for mobile links */
     }
 
     .blogs-section h1 {
@@ -512,6 +574,8 @@ body::before {
 }
 
 .logo-footer img {
+    width: 24px;
+    height: 24px;
 }
 
 .footer-col .tagline {
