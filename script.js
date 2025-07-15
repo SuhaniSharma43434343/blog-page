@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Burger menu functionality
     const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
+    const nav = document.querySelector('.nav');
     const navLinks = document.querySelectorAll('.nav-links li');
 
     if (burger && nav) {
@@ -76,6 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Burger Animation
             burger.classList.toggle('toggle');
+        });
+
+        // Close nav when a link is clicked (for mobile)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('nav-active');
+                burger.classList.remove('toggle');
+                navLinks.forEach(link => {
+                    link.style.animation = ''; // Reset animation
+                });
+            });
         });
     }
 
