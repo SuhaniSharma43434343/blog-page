@@ -120,49 +120,51 @@ body::before {
 
 @media (max-width: 768px) {
     .header .container {
-        flex-direction: row; /* Keep header items in a row */
-        justify-content: space-between; /* Space out items */
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap; /* Allow items to wrap */
+        flex-wrap: nowrap; /* Prevent wrapping */
     }
 
     .logo {
-        order: 1; /* Ensure logo is first */
+        order: 1;
+        flex-grow: 1; /* Allow logo to take available space */
     }
 
     .burger {
-        display: block; /* Show burger on mobile */
-        order: 2; /* Place burger after logo */
+        display: block;
+        order: 3; /* Place burger after button */
     }
 
     .vpn-button {
-        order: 3; /* Move VPN button to the end on mobile */
-        width: 100%; /* Make button full width */
-        margin-top: 15px; /* Add some space */
-        padding: 8px 15px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Adjust font size for smaller screens */
+        order: 2; /* Place VPN button between logo and burger */
+        width: auto; /* Allow button to size naturally */
+        margin-top: 0; /* Remove top margin */
+        padding: 8px 15px;
+        font-size: 14px;
+        margin-left: auto; /* Push the button to the right, next to the burger */
     }
 
     .nav {
-        display: none; /* Hide nav by default on mobile */
-        position: fixed; /* Use fixed to cover entire screen */
+        display: none;
+        position: fixed;
         top: 0;
         left: 0;
-        height: 100%; /* Full height */
+        height: 100%;
         width: 100%;
         background-color: #16213e;
-        padding-top: 80px; /* Space for header */
+        padding-top: 80px;
         z-index: 10;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* Center content vertically */
-        transition: transform 0.3s ease-in-out; /* Smooth transition for nav */
-        transform: translateX(100%); /* Start off-screen to the right */
+        justify-content: center;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%);
     }
 
     .nav.nav-active {
         display: flex;
-        transform: translateX(0); /* Slide in from right */
+        transform: translateX(0);
     }
 
     .nav ul {
@@ -173,11 +175,11 @@ body::before {
     }
 
     .nav ul li {
-        margin: 15px 0; /* More space between links */
+        margin: 15px 0;
     }
 
     .nav ul li a {
-        font-size: 20px; /* Larger font for mobile links */
+        font-size: 20px;
     }
 
     .burger.toggle .line1 {
@@ -616,7 +618,7 @@ body::before {
 }
 
 .footer-col.contact-info ul li:hover {
-    color: #e94560; /* Change to red on hover for consistency */
+    color: #f46e84; /* Change to red on hover for consistency */
 }
 
 .footer-col.contact-info ul li:hover img {
